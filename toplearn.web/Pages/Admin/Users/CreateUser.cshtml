@@ -1,0 +1,104 @@
+﻿@page
+@model toplearn.web.Pages.Admin.Users.CreateUserModel
+@using toplearn.Datalayer.Entities.User
+@{
+    ViewData["Title"] = "افزودن کاربر جدید";
+    List<Role> Roles = ViewData["Roles"] as List<Role>;
+
+}
+
+
+<form method="post" enctype="multipart/form-data">
+    <div class="row">
+
+        <div class="col-lg-12">
+            <h2 class="page-header">افزودن کاربر جدید</h2>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+
+    <div class="col-md-8">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                کاربران
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label>نام کاربری</label>
+
+                    <input type="text" class="form-control" asp-for="CreateUserViewModel.UserName">
+
+                </div>
+                <div class="form-group">
+                    <label>ایمیل</label>
+                    <input type="email" class="form-control" asp-for="CreateUserViewModel.Email">
+
+                </div>
+                <div class="form-group">
+                    <label>کلمه عبور</label>
+                    <input type="text" class="form-control" asp-for="CreateUserViewModel.PassWord">
+
+                    <div class="panel-body">
+                        <div class="panel-heading">
+                            انتخاب نقش کاربر
+                        </div>
+                        <div class="form-group">
+                            @foreach (var item in Roles)
+                            {
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="SelectedRol" value="@item.RolID">@item.RolTitle
+                                    </label>
+                                </div>
+                            }
+                        </div>
+
+                        <div class="row">
+                            <button class="btn-sm btn-success ">ذخیره اطلاعات</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                تصویر پروفایل
+            </div>
+            <div class="panel-body">
+                <img id="ImgAvatar" class="thumbnail" src="/UserAvator/Defult.jpg" />
+                <div class="form-group">
+                    <label>File input</label>
+                    <input type="file" asp-for="CreateUserViewModel.UserAtar">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+@section Scripts
+    {
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#ImgAvatar').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]); // convert to base64 string
+            }
+        }
+
+        $('#CreateUserViewModel_UserAtar').change(function () {
+            readURL(this);
+        });
+    </script>
+
+
+}

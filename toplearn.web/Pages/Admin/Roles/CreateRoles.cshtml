@@ -1,0 +1,52 @@
+﻿@page
+@model toplearn.web.Pages.Admin.Roles.CreateRolesModel
+@{
+    ViewData["Title"] = "افزودن نقش جدید";
+}
+
+<form method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Role.RolID" />
+    <div class="row">
+
+        <div class="col-lg-12">
+            <h2 class="page-header">افزودن نقش جدید</h2>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+
+    <div class="col-md-8">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                نقشها
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label>عنوان نقش</label>
+
+                    <input type="text" class="form-control" asp-for="Role.RolTitle">
+
+                    <div class="row" style="margin-right:auto">
+                        <br />
+                        <button  class="btn-sm btn-success center-block" >ذخیره </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                دسترسی ها
+            </div>
+            <div class="panel-body">
+
+                <div class="form-group">
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+

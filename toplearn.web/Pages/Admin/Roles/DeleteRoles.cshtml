@@ -1,0 +1,46 @@
+﻿@page "{id}"
+@model toplearn.web.Pages.Admin.Roles.DeleteRolesModel
+@{
+    ViewData["Title"] = "حذف نقش";
+}
+
+<div class="col-md-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            حذف نقش
+        </div>
+        <div class="panel-body">
+
+
+            <form method="post">
+                <input type="hidden" asp-for="Role.RolID" />
+                <input type="hidden" asp-for="Role.RolTitle"/>
+
+                <dl class="container alert-danger">
+
+                    <h2>
+                        آیا از حذف نقش
+                        @Model.Role.RolTitle
+
+                        مطمئن هستید؟
+                    </h2>
+                    <p>
+                        <input type="submit" value="حذف" class="btn btn-outline btn-danger" />
+                        <a asp-page="index" class="btn btn-outline btn-info">انصراف</a>
+                    </p>
+
+
+                </dl>
+            </form>
+        
+
+
+
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
+</div>
+
+
+
